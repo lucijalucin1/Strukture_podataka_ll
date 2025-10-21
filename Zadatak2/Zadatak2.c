@@ -28,7 +28,7 @@ int main() {
 
 	_per* head = NULL;
 
-	addBeginning(&head); //Dodavanje nove osobe na poèetak liste
+	addBeginning(&head); //Dodavanje nove osobe na poÃ¨etak liste
 	addBeginning(&head);
 
 	addEnd(&head);
@@ -37,27 +37,33 @@ int main() {
 	printlist(head);
 
 	char searchLname[50];
-	printf("Pretrežite osobu po prezimenu:\n");
+	printf("PretreÅ¾ite osobu po prezimenu:\n");
 	scanf("%s", searchLname);
 
 	_per* found = findByLname(head, searchLname);
 
 	if (found != NULL)
-		printf("Pronaðena osoba: %s %s, %d.\n", found->name, found->lname, found->year);
+		printf("PronaÃ°ena osoba: %s %s, %d.\n", found->name, found->lname, found->year);
 	else
-		printf("Osoba sa prezimenom '%s' nije pronaðena.\n", searchLname);
+		printf("Osoba sa prezimenom '%s' nije pronaÃ°ena.\n", searchLname);
 
 	char deleteLname[50];
-	printf("Obrišite osobu po prezimenu:\n");
+	printf("ObriÅ¡ite osobu po prezimenu:\n");
 	scanf("%s", deleteLname);
 
 	deleteByLname(&head, deleteLname);
 
-	printf("Lista trenutaèno:\n");
+	printf("Lista trenutaÃ¨no:\n");
 	printlist(head);
 
 	
-	free(head); // Oslobaðanje memorije nakon korištenja
+	// OslobaÄ‘anje memorije cijele liste
+    _per* temp;
+    while (head != NULL) {
+        temp = head;        // zapamti trenutni element
+        head = head->next;  // idi na sljedeÄ‡i element
+        free(temp);         // oslobodi zapamÄ‡eni
+}
 
 
 	return 0;
@@ -67,21 +73,21 @@ void addBeginning(_per** head) {
 	_per* newPer = (_per*)malloc(sizeof(_per));
 
 	if (!newPer) {
-		printf("Greška pri alokaciji memorije!\n");
-		return head; // Vraæamo originalnu listu bez promjena
+		printf("GreÅ¡ka pri alokaciji memorije!\n");
+		return head; // VraÃ¦amo originalnu listu bez promjena
 	}
 
-	printf("Dodajte ime i prezime(na poèetak liste):\n");
+	printf("Dodajte ime i prezime(na poÃ¨etak liste):\n");
 	scanf("%s %s", newPer->name, newPer->lname);
 
 
-	printf("Unesi godinu roðenja:\n");
+	printf("Unesi godinu roÃ°enja:\n");
 	scanf("%d", &newPer->year);
 
-	newPer->next = *head; // novi èvor pokazuje na stari prvi
+	newPer->next = *head; // novi Ã¨vor pokazuje na stari prvi
 
 	
-	*head= newPer;  // "head" sada pokazuje na novi èvorpe
+	*head= newPer;  // "head" sada pokazuje na novi Ã¨vorpe
 
 }
 
@@ -89,33 +95,33 @@ void addEnd(_per** head) {
 	_per* newPer = (_per*)malloc(sizeof(_per));
 
 	if (!newPer) {
-		printf("Greška pri alokaciji memorije!\n");
-		return head; // Vraæamo originalnu listu bez promjena
+		printf("GreÅ¡ka pri alokaciji memorije!\n");
+		return head; // VraÃ¦amo originalnu listu bez promjena
 	}
 
 	printf("Dodaj ime i prezime(na kraj liste):\n");
 	scanf("%s %s", newPer->name, newPer->lname);
 
 
-	printf("Unesi godinu roðenja:\n");
+	printf("Unesi godinu roÃ°enja:\n");
 	scanf("%d", &newPer->year);
 
-	newPer->next = NULL; //novi èvor je zadnji, pa pokazuje na NULL
+	newPer->next = NULL; //novi Ã¨vor je zadnji, pa pokazuje na NULL
 
 	// Ako je lista prazna (nema elemenata)
 	if (*head == NULL) {
-		*head = newPer; // novi èvor postaje prvi i jedini
+		*head = newPer; // novi Ã¨vor postaje prvi i jedini
 		return;
 	}
 
-	// Inaèe pronaði zadnji element
+	// InaÃ¨e pronaÃ°i zadnji element
 	_per* current = *head;
 	while (current->next != NULL) {
 		current = current->next; // ide do kraja
 	}
 
 	
-	current->next = newPer; // Postavi zadnji element da pokazuje na novi èvor
+	current->next = newPer; // Postavi zadnji element da pokazuje na novi Ã¨vor
 
 }
 
@@ -135,11 +141,11 @@ _per* findByLname(_per* head, char* lname) {
 	while (head != NULL) {
 		// usporedba prezimena (bez obzira na velika/mala slova)
 		if (strcmp(head->lname, lname) == 0) {
-			return head; // pronaðena osoba
+			return head; // pronaÃ°ena osoba
 		}
-		head = head->next; // idi na sljedeæu
+		head = head->next; // idi na sljedeÃ¦u
 	}
-	return NULL; // nije pronaðena
+	return NULL; // nije pronaÃ°ena
 }
 
 void deleteByLname(_per** head,char* lname) {
@@ -156,18 +162,19 @@ void deleteByLname(_per** head,char* lname) {
 		return;
 	}
 
-	// Inaèe prolazi kroz listu dok ne pronaðe odgovarajuæe prezime
+	// InaÃ¨e prolazi kroz listu dok ne pronaÃ°e odgovarajuÃ¦e prezime
 	while (current != NULL && strcmp(current->lname, lname) != 0) {
 		previous = current;
 		current = current->next;
 	}
 
 	if (current == NULL) {
-		printf("Osoba nije pronaðena.\n");
+		printf("Osoba nije pronaÃ°ena.\n");
 		return;
 	}
 
-	// Brišemo èvor iz sredine
+	// BriÅ¡emo Ã¨vor iz sredine
 	previous->next = current->next;
 	free(current);
+
 }
