@@ -1,0 +1,4 @@
+﻿  Zadatak2.c
+C:\Users\servi\Documents\Strukture\Project1\Zadatak2.c(71,3): warning C4098: 'addBeginning': 'void' function returning a value
+C:\Users\servi\Documents\Strukture\Project1\Zadatak2.c(93,3): warning C4098: 'addEnd': 'void' function returning a value
+  Project1.vcxproj -> C:\Users\servi\Documents\Strukture\Project1\x64\Debug\Project1.exe
