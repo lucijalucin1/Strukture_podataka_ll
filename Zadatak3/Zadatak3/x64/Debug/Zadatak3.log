@@ -1,0 +1,14 @@
+﻿  Zadatak3.c
+C:\Users\servi\Documents\Strukture\Zadatak3\Zadatak3.c(56,10): warning C4566: character represented by universal-character-name '\u00F0' cannot be represented in the current code page (1250)
+C:\Users\servi\Documents\Strukture\Zadatak3\Zadatak3.c(58,10): warning C4566: character represented by universal-character-name '\u00F0' cannot be represented in the current code page (1250)
+C:\Users\servi\Documents\Strukture\Zadatak3\Zadatak3.c(66,9): warning C4566: character represented by universal-character-name '\u00E8' cannot be represented in the current code page (1250)
+C:\Users\servi\Documents\Strukture\Zadatak3\Zadatak3.c(76,9): warning C4566: character represented by universal-character-name '\u00E8' cannot be represented in the current code page (1250)
+C:\Users\servi\Documents\Strukture\Zadatak3\Zadatak3.c(124,3): warning C4098: 'addBeginning': 'void' function returning a value
+C:\Users\servi\Documents\Strukture\Zadatak3\Zadatak3.c(127,9): warning C4566: character represented by universal-character-name '\u00E8' cannot be represented in the current code page (1250)
+C:\Users\servi\Documents\Strukture\Zadatak3\Zadatak3.c(131,9): warning C4566: character represented by universal-character-name '\u00F0' cannot be represented in the current code page (1250)
+C:\Users\servi\Documents\Strukture\Zadatak3\Zadatak3.c(146,3): warning C4098: 'addEnd': 'void' function returning a value
+C:\Users\servi\Documents\Strukture\Zadatak3\Zadatak3.c(153,9): warning C4566: character represented by universal-character-name '\u00F0' cannot be represented in the current code page (1250)
+C:\Users\servi\Documents\Strukture\Zadatak3\Zadatak3.c(219,10): warning C4566: character represented by universal-character-name '\u00F0' cannot be represented in the current code page (1250)
+C:\Users\servi\Documents\Strukture\Zadatak3\Zadatak3.c(238,3): warning C4098: 'addAfter': 'void' function returning a value
+C:\Users\servi\Documents\Strukture\Zadatak3\Zadatak3.c(273,3): warning C4098: 'addBefore': 'void' function returning a value
+  Zadatak3.vcxproj -> C:\Users\servi\Documents\Strukture\Zadatak3\x64\Debug\Zadatak3.exe
