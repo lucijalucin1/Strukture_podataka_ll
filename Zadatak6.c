@@ -3,10 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-/* ===========================================================
-   STRUCT DEFINITIONS
-   =========================================================== */
-
 typedef struct Artikal* Artikal;
 
 struct Artikal {
@@ -24,16 +20,12 @@ struct Invoice {
     Invoice next;    // next invoice
 };
 
-/* ===========================================================
-   Compare two dates in format YYYY-MM-DD
-   =========================================================== */
+
 int compareDates(const char* d1, const char* d2) {
     return strcmp(d1, d2);
 }
 
-/* ===========================================================
-   Insert an item sorted by name
-   =========================================================== */
+
 void insertItemSorted(Artikal* head, Artikal newItem) {
     if (*head == NULL || strcmp(newItem->naziv, (*head)->naziv) < 0) {
         newItem->next = *head;
@@ -49,9 +41,7 @@ void insertItemSorted(Artikal* head, Artikal newItem) {
     tmp->next = newItem;
 }
 
-/* ===========================================================
-   Insert invoice sorted by date
-   =========================================================== */
+
 void insertInvoiceSorted(Invoice* head, Invoice newInv) {
     if (*head == NULL || compareDates(newInv->date, (*head)->date) < 0) {
         newInv->next = *head;
@@ -67,9 +57,7 @@ void insertInvoiceSorted(Invoice* head, Invoice newInv) {
     tmp->next = newInv;
 }
 
-/* ===========================================================
-   Load a single invoice from file
-   =========================================================== */
+
 Invoice loadSingleInvoice(const char* filename) {
     FILE* f = fopen(filename, "r");
     if (!f) {
@@ -102,9 +90,7 @@ Invoice loadSingleInvoice(const char* filename) {
     return inv;
 }
 
-/* ===========================================================
-   Load all invoices listed in invoices.txt
-   =========================================================== */
+
 void loadAllInvoices(Invoice* head) {
     FILE* f = fopen("Racuni.txt", "r");
     if (!f) {
@@ -122,9 +108,6 @@ void loadAllInvoices(Invoice* head) {
     fclose(f);
 }
 
-/* ===========================================================
-   Query total quantity and total cost of a given item
-   =========================================================== */
 void query(Invoice head) {
     char itemName[100];
     char from[11], to[11];
@@ -162,9 +145,7 @@ void query(Invoice head) {
     printf("Total money spent: %.2f\n", totalCost);
 }
 
-/* ===========================================================
-   FREE MEMORY (items + invoices)
-   =========================================================== */
+
 void freeItems(Artikal head) {
     while (head) {
         Artikal tmp = head;
@@ -183,9 +164,7 @@ void freeInvoices(Invoice head) {
     }
 }
 
-/* ===========================================================
-   MAIN
-   =========================================================== */
+
 int main() {
     Invoice invoices = NULL;
 
@@ -195,4 +174,5 @@ int main() {
     freeInvoices(invoices);  // free everything before exit
 
     return 0;
+
 }
