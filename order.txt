@@ -1,0 +1,5 @@
+Inorder after insert:
+55 90 31 44 60 29 35 41 75 40 
+
+Inorder after replace:
+0 86 0 265 0 60 465 0 81 0 
